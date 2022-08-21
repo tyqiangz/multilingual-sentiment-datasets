@@ -1,7 +1,7 @@
 import requests
 
 LANGUAGES = {"english": "en"}
-SPLITS = ["train", "val", "test"]
+SPLITS = {"train": "train", "val": "valid", "test": "test"}
 ID2LABEL = {"0": "negative", "1": "neutral", "2": "positive"}
 
 for language in LANGUAGES:
@@ -18,6 +18,6 @@ for language in LANGUAGES:
         assert len(texts) == len(
             labels), f"Number of texts and labels not equal for {language}/{split}_text.txt and {language}/{split}_labels.txt"
 
-        with open(f"../{LANGUAGES[language]}/{split}.tsv", "w") as f:
+        with open(f"../{LANGUAGES[language]}/{SPLITS[split]}.tsv", "w") as f:
             for text, label in zip(texts, labels):
                 f.write(text + "\t" + ID2LABEL[label] + "\n")
