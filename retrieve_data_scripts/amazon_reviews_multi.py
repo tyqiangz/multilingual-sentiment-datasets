@@ -12,13 +12,11 @@ def aggregate(texts, stars, filename_to_save):
 
     df = pd.DataFrame({"text": subset_texts, "label": labels})
     
-    df.to_csv(filename_to_save, index=False, sep="\t")
+    df.to_csv(filename_to_save, index=False)
 
     return df
 
-LANGUAGES = {"zh": "chinese", "jp": "japanese"}
-zh_ds = datasets.load_dataset("amazon_reviews_multi", "zh")
-jp_ds = datasets.load_dataset("amazon_reviews_multi", "ja")
+LANGUAGES = {"zh": "chinese", "ja": "japanese"}
 
 SPLITS = {"train": "train", "validation": "valid", "test": "test"}
 
@@ -28,4 +26,4 @@ for lang in LANGUAGES:
     for split in SPLITS:
         aggregate(texts=dataset[split]["review_body"], 
                 stars=dataset[split]["stars"], 
-                filename_to_save=f"../{LANGUAGES[lang]}/{SPLITS[split]}.tsv")
+                filename_to_save=f"../data/{LANGUAGES[lang]}/{SPLITS[split]}.csv")

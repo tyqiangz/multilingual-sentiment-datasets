@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 
+# the data in the following links has no train-test split
 LINKS = [
     "https://raw.githubusercontent.com/huseinzol05/malay-dataset/master/sentiment/news-sentiment/sentiment-data-v2.csv",
     "https://raw.githubusercontent.com/huseinzol05/malay-dataset/master/sentiment/supervised-twitter/data.csv",
@@ -57,6 +58,6 @@ train_df = pd.concat([X_train, y_train], axis=1).reset_index(drop=True)
 valid_df = pd.concat([X_val, y_val], axis=1).reset_index(drop=True)
 test_df = pd.concat([X_test, y_test], axis=1).reset_index(drop=True)
 
-train_df.to_csv("../data/malay/train.tsv", sep="\t", index=False)
-valid_df.to_csv("../data/malay/valid.tsv", sep="\t", index=False)
-test_df.to_csv("../data/malay/test.tsv", sep="\t", index=False)
+train_df.to_csv("../data/malay/train.csv", index=False)
+valid_df.to_csv("../data/malay/valid.csv", index=False)
+test_df.to_csv("../data/malay/test.csv", index=False)

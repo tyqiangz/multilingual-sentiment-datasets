@@ -23,4 +23,4 @@ for language in LANGUAGES:
         assert len(texts) == len(labels), f"Number of texts and labels not equal for {language}/{split}_text.txt and {language}/{split}_labels.txt"
         
         df = pd.DataFrame({"text": texts, "label": labels_in_text})
-        df.to_csv(f"./data/{language}/{SPLITS[split]}.tsv", sep="\t", index=False)
+        df.to_csv(f"../data/{language}/{SPLITS[split]}.csv", index=False)
