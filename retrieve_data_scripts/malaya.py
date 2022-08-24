@@ -58,6 +58,10 @@ train_df = pd.concat([X_train, y_train], axis=1).reset_index(drop=True)
 valid_df = pd.concat([X_val, y_val], axis=1).reset_index(drop=True)
 test_df = pd.concat([X_test, y_test], axis=1).reset_index(drop=True)
 
+train_df["source"] = "malaya"
+valid_df["source"] = "malaya"
+test_df["source"] = "malaya"
+
 train_df.to_csv("../data/malay/train.csv", index=False)
 valid_df.to_csv("../data/malay/valid.csv", index=False)
 test_df.to_csv("../data/malay/test.csv", index=False)
