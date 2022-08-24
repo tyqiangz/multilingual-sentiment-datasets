@@ -20,6 +20,10 @@ train_df = pd.concat(df_list["train"])
 valid_df = pd.concat(df_list["valid"])
 test_df = pd.concat(df_list["test"])
 
-train_df.to_csv("../data/all/train.tsv", sep="\t", index=False)
-valid_df.to_csv("../data/all/valid.tsv", sep="\t", index=False)
-test_df.to_csv("../data/all/test.tsv", sep="\t", index=False)
+print(len(pd.isna(train_df["text"])))
+print(len(pd.isna(valid_df["text"])))
+print(len(pd.isna(test_df["text"])))
+
+# train_df.to_csv("../data/all/train.tsv", sep="\t", index=False)
+# valid_df.to_csv("../data/all/valid.tsv", sep="\t", index=False)
+# test_df.to_csv("../data/all/test.tsv", sep="\t", index=False)
