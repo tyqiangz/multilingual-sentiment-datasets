@@ -6,20 +6,16 @@ LANGUAGES = [
     'spanish', 'chinese', 'indonesian', 'arabic'
 ]
 
-df_list = {"train": [], "valid": [], "test": []}
-
-for lang in LANGUAGES:
-    for split in ["train", "valid", "test"]:
+for split in ["train", "valid", "test"]:
+    df_list = []
+    
+    for lang in LANGUAGES:
         print(lang, split)
-        filepath = f"../data/{lang}/{split}.tsv"
-        df = pd.read_csv(filepath, sep='\t')
+        filepath = f"../data/{lang}/{split}.csv"
+        df = pd.read_csv(filepath)
         df["language"] = lang
-        df_list[split].append(df)
+        df_list.append(df)
 
-train_df = pd.concat(df_list["train"])
-valid_df = pd.concat(df_list["valid"])
-test_df = pd.concat(df_list["test"])
+        all_df = pd.concat(df_list)
 
-train_df.to_csv("../data/all/train.csv", sep="\t", index=False)
-valid_df.to_csv("../data/all/valid.csv", sep="\t", index=False)
-test_df.to_csv("../data/all/test.csv", sep="\t", index=False)
+        all_df.to_csv(f"../data/all/{split}.csv", index=False)
